@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}NomNom - Neueste Rezepte{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Neueste Rezepte</h2>
+
+{% if recipes and recipes|length > 0 %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for recipe in recipes %}
+        <div class="col">
+            <div class="card h-100 text-center p-3">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="mb-3">
+                        <h4 class="card-title">{{ recipe.title }}</h4>
+                        <p class="card-text"><strong>Kategorie:</strong> {{ recipe.category }}</p>
+                    </div>
+                    <a href="{{ url_for('views.recipe_details', recipe_id=recipe.id) }}" class="btn btn-primary mt-auto">
+                        Rezept ansehen
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-center">Noch keine Rezepte vorhanden.</p>
+{% endif %}
+{% endblock %}
