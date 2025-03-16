@@ -120,18 +120,18 @@ def add_sample_recipes():
         "preparation": "Hähnchenbrüste anbraten, Honig-Senf-Sauce dazugeben und köcheln lassen.",
         "category": "Fleisch",
         },
-            {
+        {
         "title": "Gnocchi mit Gorgonzola-Sauce",
         "ingredients": "500g Gnocchi, 150g Gorgonzola, 200ml Sahne, 1 Knoblauchzehe, 1 TL Butter, Salz, Pfeffer",
         "preparation": "Gnocchi kochen. Gorgonzola in Sahne schmelzen, Knoblauch dazugeben und würzen. Gnocchi in die Sauce geben und servieren.",
         "category": "Vegetarisch",
-    },
-    {
+        },
+        {
         "title": "Mousse au Chocolat",
         "ingredients": "200g Zartbitterschokolade, 3 Eier, 50g Zucker, 200ml Sahne",
         "preparation": "Schokolade schmelzen. Eier trennen, Eiweiß steif schlagen. Eigelb mit Zucker verrühren, Schokolade unterheben. Sahne schlagen und alles vorsichtig mischen. Kühl stellen.",
         "category": "Nachtisch",
-    }
+        }
     ]
 
     # Die Rezeptdaten in die Datenbank einfügen
