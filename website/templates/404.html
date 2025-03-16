@@ -1,9 +1,6 @@
 <!-- 404.html - Fehlerseite für nicht gefundene Seiten -->
-{% extends "base.html" %}
- 
-{% block title %}Fehler 404 - Seite nicht gefunden{% endblock %}
- 
-{% block content %}
+{% extends "base.html" %} {% block title %}Fehler 404 - Seite nicht gefunden{%
+endblock %} {% block content %}
 <h2>404 - Seite nicht gefunden</h2>
 <p>Die Seite, die du suchst, existiert nicht oder wurde entfernt.</p>
 <p><a href="{{ url_for('views.home') }}">Zur Startseite</a></p>

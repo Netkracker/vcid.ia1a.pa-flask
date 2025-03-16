@@ -1,44 +1,59 @@
 <!-- recipe_search.html - Rezeptsuche -->
-{% extends "base.html" %}
-
-{% block title %}NomNom - Rezeptsuche{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}NomNom - Rezeptsuche{% endblock %} {%
+block content %}
 <h2 class="text-center">Rezeptsuche</h2>
 
 <!-- Suchformular -->
-<form method="GET" action="{{ url_for('views.recipe_search') }}" class="d-flex justify-content-center mb-4">
-    <input type="text" name="q" class="form-control w-50" placeholder="Rezept suchen..." value="{{ query }}">
-    <button type="submit" class="btn btn-primary ms-2">Suchen</button>
+<form
+  method="GET"
+  action="{{ url_for('views.recipe_search') }}"
+  class="d-flex justify-content-center mb-4"
+>
+  <input
+    type="text"
+    name="q"
+    class="form-control w-50"
+    placeholder="Spaghetti Carbonara..."
+    value="{{ query }}"
+  />
+  <button type="submit" class="btn btn-primary ms-2">Suchen</button>
 </form>
 
 {% if recipes %}
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        {% for recipe in recipes %}
-            <div class="col">
-                <div class="card h-100 d-flex flex-column">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ recipe.title }}</h5>
-                        <p class="card-text"><strong>Kategorie:</strong> {{ recipe.category }}</p>
-                        <p class="card-text"><strong>Erstellt am:</strong> {{ recipe.created_at.strftime('%d.%m.%Y') }}</p>
-                        
-                        <!-- Zutaten kürzen -->
-                        <p class="card-text flex-grow-1">
-                            {{ recipe.ingredients[:100] }}{% if recipe.ingredients|length > 100 %}...{% endif %}
-                        </p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for recipe in recipes %}
+  <div class="col">
+    <div class="card h-100 d-flex flex-column">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <p class="card-text">
+          <strong>Kategorie:</strong> {{ recipe.category }}
+        </p>
+        <p class="card-text">
+          <strong>Erstellt am:</strong> {{
+          recipe.created_at.strftime('%d.%m.%Y') }}
+        </p>
 
-                        <!-- Rezept ansehen Button immer unten -->
-                        <div class="mt-auto">
-                            <a href="{{ url_for('views.recipe_details', recipe_id=recipe.id) }}" class="btn btn-primary w-100">
-                                Rezept ansehen
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+        <!-- Zutaten kürzen -->
+        <p class="card-text flex-grow-1">
+          {{ recipe.ingredients[:100] }}{% if recipe.ingredients|length > 100
+          %}...{% endif %}
+        </p>
+
+        <!-- Rezept ansehen Button immer unten -->
+        <div class="mt-auto">
+          <a
+            href="{{ url_for('views.recipe_details', recipe_id=recipe.id) }}"
+            class="btn btn-primary w-100"
+          >
+            Rezept ansehen
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
+  {% endfor %}
+</div>
 {% else %}
-    <p class="text-center">Keine Rezepte gefunden.</p>
-{% endif %}
-{% endblock %}
+<p class="text-center">Keine Rezepte gefunden.</p>
+{% endif %} {% endblock %}

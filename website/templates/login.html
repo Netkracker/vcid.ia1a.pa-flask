@@ -1,42 +1,54 @@
 <!-- login.html - Anmeldung -->
-{% extends "base.html" %}
-
-{% block title %}Login{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+%}
 <div class="container mt-4">
-    <h2 class="text-center">Anmelden</h2>
+  <h2 class="text-center">Anmelden</h2>
 
-    <!-- 🔹 Flash-Nachrichten richtig anzeigen -->
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-            <div class="mt-3">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+  <!-- Flash-Nachrichten richtig anzeigen -->
+  {% with messages = get_flashed_messages(with_categories=True) %} {% if
+  messages %}
+  <div class="mt-3">
+    {% for category, message in messages %}
+    <div
+      class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
 
-    <form method="POST">
-        <div class="mb-3">
-            <label for="email" class="form-label">E-Mail:</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
+  <form method="POST">
+    <div class="mb-3">
+      <label for="email" class="form-label">E-Mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        required
+      />
+    </div>
 
-        <div class="mb-3">
-            <label for="password" class="form-label">Passwort:</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-        </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Passwort:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        required
+      />
+    </div>
 
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-    </form>
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+  </form>
 
-    <p class="text-center mt-3">
-        Noch kein Konto? <a href="{{ url_for('auth.register') }}">Hier registrieren</a>
-    </p>
+  <p class="text-center mt-3">
+    Noch kein Konto?
+    <a href="{{ url_for('auth.register') }}">Hier registrieren</a>
+  </p>
 </div>
 {% endblock %}

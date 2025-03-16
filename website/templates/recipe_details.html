@@ -1,26 +1,38 @@
 <!-- recipe_details.html - Rezeptdetails anzeigen -->
-{% extends "base.html" %}
-
-{% block title %}{{ recipe.title }} - NomNom{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}{{ recipe.title }} - NomNom{%
+endblock %} {% block content %}
 <h2 class="text-center">{{ recipe.title }}</h2>
 
 <div class="card">
-    <div class="card-body">
-        <p><strong>Kategorie:</strong> {{ recipe.category }}</p>
-        <p><strong>Erstellt am:</strong> {{ recipe.created_at.strftime('%d.%m.%Y') }}</p>
-        <h4>Zutaten:</h4>
-        <p>{{ recipe.ingredients }}</p>
-        <h4>Zubereitung:</h4>
-        <p>{{ recipe.preparation }}</p>
-    </div>
+  <div class="card-body">
+    <p><strong>Kategorie:</strong> {{ recipe.category }}</p>
+    <p>
+      <strong>Erstellt am:</strong> {{ recipe.created_at.strftime('%d.%m.%Y') }}
+    </p>
+    <h4>Zutaten:</h4>
+    <p>{{ recipe.ingredients }}</p>
+    <h4>Zubereitung:</h4>
+    <p>{{ recipe.preparation }}</p>
+  </div>
 </div>
 {% if current_user.is_authenticated and current_user.id == recipe.user_id %}
-    <a href="{{ url_for('views.recipe_edit', recipe_id=recipe.id) }}" class="btn btn-warning">Bearbeiten</a>
+<a
+  href="{{ url_for('views.recipe_edit', recipe_id=recipe.id) }}"
+  class="btn btn-warning"
+  >Bearbeiten</a
+>
 
-    <form method="POST" action="{{ url_for('views.recipe_delete', recipe_id=recipe.id) }}" style="display:inline;">
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Willst du dieses Rezept wirklich löschen?');">Löschen</button>
-    </form>
-{% endif %}
-{% endblock %}
+<form
+  method="POST"
+  action="{{ url_for('views.recipe_delete', recipe_id=recipe.id) }}"
+  style="display: inline"
+>
+  <button
+    type="submit"
+    class="btn btn-danger"
+    onclick="return confirm('Willst du dieses Rezept wirklich löschen?');"
+  >
+    Löschen
+  </button>
+</form>
+{% endif %} {% endblock %}

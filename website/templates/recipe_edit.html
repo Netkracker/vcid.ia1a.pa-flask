@@ -1,33 +1,66 @@
-{% extends "base.html" %}
-
-{% block title %}Rezept bearbeiten - {{ recipe.title }}{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Rezept bearbeiten - {{ recipe.title
+}}{% endblock %} {% block content %}
 <h2 class="text-center">Rezept bearbeiten</h2>
 
 <form method="POST">
-    <div class="mb-3">
-        <label for="title" class="form-label">Titel</label>
-        <input type="text" id="title" name="title" class="form-control" value="{{ recipe.title }}" required>
-    </div>
+  <div class="mb-3">
+    <label for="title" class="form-label">Titel</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      class="form-control"
+      value="{{ recipe.title }}"
+      required
+    />
+  </div>
 
-    <div class="mb-3">
-        <label for="category" class="form-label">Kategorie</label>
-        <input type="text" id="category" name="category" class="form-control" value="{{ recipe.category }}" required>
-    </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Kategorie</label>
+    <input
+      type="text"
+      id="category"
+      name="category"
+      class="form-control"
+      value="{{ recipe.category }}"
+      required
+    />
+  </div>
 
-    <div class="mb-3">
-        <label for="ingredients" class="form-label">Zutaten</label>
-        <textarea id="ingredients" name="ingredients" class="form-control" rows="4" required>{{ recipe.ingredients }}</textarea>
-    </div>
+  <div class="mb-3">
+    <label for="ingredients" class="form-label">Zutaten</label>
+    <textarea
+      id="ingredients"
+      name="ingredients"
+      class="form-control"
+      rows="4"
+      required
+    >
+{{ recipe.ingredients }}</textarea
+    >
+  </div>
 
-    <div class="mb-3">
-        <label for="preparation" class="form-label">Zubereitung</label>
-        <textarea id="preparation" name="preparation" class="form-control" rows="5" required>{{ recipe.preparation }}</textarea>
-    </div>
+  <div class="mb-3">
+    <label for="preparation" class="form-label">Zubereitung</label>
+    <textarea
+      id="preparation"
+      name="preparation"
+      class="form-control"
+      rows="5"
+      required
+    >
+{{ recipe.preparation }}</textarea
+    >
+  </div>
 
-    <button type="submit" class="btn btn-success w-100">Änderungen speichern</button>
+  <button type="submit" class="btn btn-success w-100">
+    Änderungen speichern
+  </button>
 </form>
 
-<a href="{{ url_for('views.recipe_details', recipe_id=recipe.id) }}" class="btn btn-secondary w-100 mt-3">Abbrechen</a>
+<a
+  href="{{ url_for('views.recipe_details', recipe_id=recipe.id) }}"
+  class="btn btn-secondary w-100 mt-3"
+  >Abbrechen</a
+>
 {% endblock %}
