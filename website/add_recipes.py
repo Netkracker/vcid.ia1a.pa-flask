@@ -7,7 +7,7 @@ def add_sample_recipes():
 
     # Überprüfung, ob bereits Rezepte in der Datenbank existieren
     if Recipe.query.first():
-        print("Die Datenbank enthält bereits Rezepte. Kein erneutes Hinzufügen nötig.")
+        print("Die Datenbank enthält bereits Rezepte. Kein erneutes Hinzufuegen noetig.")
         return
 
     # Liste mit Beispielrezepten
@@ -141,4 +141,4 @@ def add_sample_recipes():
 
     # Änderungen in der Datenbank speichern
     db.session.commit()
-    print("Beispielrezepte erfolgreich hinzugefügt!")
+    print("Beispielrezepte erfolgreich hinzugefuegt!")
