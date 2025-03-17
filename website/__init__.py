@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from config import Config
@@ -6,6 +7,7 @@ import logging
 
 # Initialisierung der Datenbank
 db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app():
     #Erstellt und konfiguriert die Flask-App.
@@ -13,6 +15,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)  # Lädt die Konfiguration aus der Config-Klasse
     db.init_app(app)  # Initialisiert SQLAlchemy mit der App
+    migrate.init_app(app, db)
     
     # logging to stdout for heroku
     if app.config['LOG_TO_STDOUT']:
