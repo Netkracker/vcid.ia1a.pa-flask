@@ -7,7 +7,6 @@ import logging
 
 # Initialisierung der Datenbank
 db = SQLAlchemy()
-migrate = Migrate()
 
 def create_app():
     #Erstellt und konfiguriert die Flask-App.
@@ -15,12 +14,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)  # Lädt die Konfiguration aus der Config-Klasse
     db.init_app(app)  # Initialisiert SQLAlchemy mit der App
-    migrate.init_app(app, db)
-    try:
-            # Migrations automatisch ausführen
-            print("Datenbank wird aktualisiert...")
-            from flask_migrate import upgrade
-            upgrade()
+
     # logging to stdout for heroku
     if app.config['LOG_TO_STDOUT']:
             stream_handler = logging.StreamHandler()
