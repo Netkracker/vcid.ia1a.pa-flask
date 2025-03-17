@@ -13,6 +13,12 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)  # Lädt die Konfiguration aus der Config-Klasse
     db.init_app(app)  # Initialisiert SQLAlchemy mit der App
+    
+    # logging to stdout for heroku
+    if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
 
     # Importieren und Registrieren der Blueprints für Views und Authentifizierung
     from .views import views
