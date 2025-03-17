@@ -45,6 +45,7 @@ def create_app():
 
     # Automatisches Hinzufügen von Beispielrezepten beim Start der App
     with app.app_context():
+        db.create_all()  # Erstellt fehlende Tabellen
         from .add_recipes import add_sample_recipes
         add_sample_recipes()
 
